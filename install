@@ -10,17 +10,17 @@ VERSION="20220321"
 mount -o remount,exec /tmp
 umask 0022
 
-PATH_TO_INSTALL="${1}/textlive"         # Repertoire d'installation
-LOCAL_ARTEFACT="${2}"                   # Depot UdeM des sources externes;
-WORKING_BUILD="${3}"                    # Repertoire de compilation
-LOG_DIR="${4}/latex-${VERSION}"         # configure make and install logs
-GIT_DIR=`dirname $0`                    # Repertoire courant qui contiendra tous les fichiers de git.
-MODULEFILES_DIR="${5}"                  # Repertoire de la centralisation des modulefiles
+PATH_TO_INSTALL="${1}/textlive/${VERSION}"  # Repertoire d'installation
+LOCAL_ARTEFACT="${2}"                       # Depot UdeM des sources externes;
+WORKING_BUILD="${3}"                        # Repertoire de compilation
+LOG_DIR="${4}/latex-${VERSION}"             # configure make and install logs
+GIT_DIR=`dirname $0`                        # Repertoire courant qui contiendra tous les fichiers de git.
+MODULEFILES_DIR="${5}"                      # Repertoire de la centralisation des modulefiles
 
 mkdir -p $LOG_DIR
 exec &>> "${LOG_DIR}/`date +%Y-%m-%d-%H-%M-%S`-install"
 
-[[ -d ${PATH_TO_INSTALL}/textlive ]] && { echo "Repertoire d'installation existant" ; exit 1; }
+[[ -d ${PATH_TO_INSTALL} ]] && { echo "Repertoire d'installation existant" ; exit 1; }
 
 ############################################################################ 
 ### FIN: NE PAS MODIFIER CETTE SECTION
@@ -47,8 +47,11 @@ tar -zxf install-tl-unx-${VERSION}.tar.gz --directory $WORKING_BUILD
 cd $WORKING_BUILD/install-tl-${VERSION}
 
 # Configurer les variables pour modifier le repertoire d'installation.
-TEXLIVE_INSTALL_PREFIX=${PATH_TO_INSTALL}
-TEXLIVE_INSTALL_TEXDIR=${PATH_TO_INSTALL}/${VERSION}
+TEXDIR=${PATH_TO_INSTALL}
+TEXMFLOCAL=${PATH_TO_INSTALL}/texmf-local
+TEXMFSYSVAR=${PATH_TO_INSTALL}/texmf-var
+TEXMFSYSCONFIG=${PATH_TO_INSTALL}/texmf-config
+
 
 # Creer le repertoire ou residera l'application
 mkdir -p ${TEXLIVE_INSTALL_TEXDIR}
