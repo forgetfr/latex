@@ -7,7 +7,10 @@ Site officiel de l'application: [CTAN](https://ctan.org/).
 
 | Version  | Auteur  | Description  |
 |---|---|---|
-| 0.1  | francis.forget@umontreal.ca  | Installation vanille  |
+| 0.1  | francis.forget@umontreal.ca  | MVP  |
+| 0.2  | francis.forget@umontreal.ca  | Automatisation  |
+| 0.3  | francis.forget@umontreal.ca  | Integration a l'environnement de deploiement   |
+| 1.0  | francis.forget@umontreal.ca  | MEP   |
 
 
 ## 1. Installation
