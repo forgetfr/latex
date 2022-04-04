@@ -1,7 +1,7 @@
 
-# R version 4.1.3
+# LaTeX version 20220321
 
-Site officiel de l'application: [CRAN-R](https://cran.r-project.org/).
+Site officiel de l'application: [CTAN](https://ctan.org/).
 
 ## Controle des **versions**:
 
@@ -29,7 +29,7 @@ Site officiel de l'application: [CRAN-R](https://cran.r-project.org/).
 | Repertoire des modulefiles        | ${5} | MODULEFILES_DIR
 
 
-Utiliser le repo CRAN: <https://cran.utstat.utoronto.ca/>
+Utiliser le repo CRAN: <https://ctan.mirror.globo.tech/>
 
 ### 1.3 Procedure:
 
