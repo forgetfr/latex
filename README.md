@@ -29,7 +29,7 @@ Site officiel de l'application: [CTAN](https://ctan.org/).
 | Repertoire des modulefiles        | ${5} | MODULEFILES_DIR
 
 
-Utiliser le repo CRAN: <https://ctan.mirror.globo.tech/>
+Utiliser le repo CTAN: <https://ctan.mirror.globo.tech/>
 
 ### 1.3 Procedure:
 
