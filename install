@@ -1,0 +1,79 @@
+# Version de l'application
+VERSION="20220321"
+
+############################################################################
+### DEBUT: NE PAS MODIFIER CETTE SECTION
+############################################################################
+
+mount -o remount,exec /tmp
+umask 0022
+
+PATH_TO_INSTALL="${1}"                  # Repertoire d'installation
+LOCAL_ARTEFACT="${2}"                   # Depot UdeM des sources externes;
+WORKING_BUILD="${3}"                    # Repertoire de compilation
+LOG_DIR="${4}/latex-${VERSION}"         # configure make and install logs
+GIT_DIR=`dirname $0`                    # Repertoire courant qui contiendra tous les fichiers de git.
+MODULEFILES_DIR="${5}"                  # Repertoire de la centralisation des modulefiles
+
+mkdir -p $LOG_DIR
+exec &>> "${LOG_DIR}/`date +%Y-%m-%d-%H-%M-%S`-install"
+
+[[ -d ${PATH_TO_INSTALL} ]] && { echo "Repertoire d'installation existant" ; exit 1; }
+
+############################################################################ 
+### FIN: NE PAS MODIFIER CETTE SECTION
+############################################################################ 
+
+############################################################################ 
+### Etape 1:  Telecharger les sources si necessaire dans le depot d'artefact
+############################################################################ 
+
+cd $LOCAL_ARTEFACT
+[[ ! -e "install-tl-unx-${VERSION}.tar.gz" ]] && {
+    echo "# SENS ############ Telechargement des artefacts directements du site officiel";
+    wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz;
+    mv install-tl-unx.tar.gz install-tl-unx-${VERSION}.tar.gz
+}
+
+echo "# SENS ############ Decompresser les artefacts"
+tar -zxf install-tl-unx-${VERSION}.tar.gz --directory $WORKING_BUILD
+
+############################################################################ 
+### Etape 2: Compiler les sources;
+############################################################################ 
+# Basculons dans le repertoire de BUILD
+cd $WORKING_BUILD/install-tl-${VERSION}
+
+# Configurer les variables pour modifier le repertoire d'installation.
+TEXLIVE_INSTALL_PREFIX=${PATH_TO_INSTALL}
+TEXLIVE_INSTALL_TEXDIR=${PATH_TO_INSTALL}/${VERSION}
+
+# Creer le repertoire ou residera l'application
+mkdir -p ${TEXLIVE_INSTALL_TEXDIR}
+
+echo "# SENS ############ Compiler et installer"
+./install-tl --no-gui --location https://ctan.mirror.globo.tech/systems/texlive/tlnet/
+
+############################################################################ 
+### Etape 3
+############################################################################ 
+echo "# SENS ############ Changer le type de papier a lettre"
+${TEXLIVE_INSTALL_TEXDIR}/bin/x86_64-linux/tlmgr paper letter
+
+############################################################################ 
+### Etape 5
+############################################################################ 
+#sed "s@WHERETO@${PATH_TO_INSTALL}@g" ${GIT_DIR}/modulefiles/latex-${VERSION}.lua > $MODULEFILES_DIR/latex-${VERSION}.lua
+
+############################################################################ 
+### DEBUT: NE PAS MODIFIER CETTE SECTION
+############################################################################ 
+# Nettoyer l'environnement de compilation
+rm -rf $WORKINGDIR
+
+mount -o remount,noexec /tmp
+
+exit 0;
+############################################################################ 
+### FIN: NE PAS MODIFIER CETTE SECTION
+############################################################################ 
