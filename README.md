@@ -35,10 +35,11 @@ Utiliser le repo CTAN: <https://ctan.mirror.globo.tech/>
 
 Les grandes etapes que l'on retrouve dans le script `install` :
 1. Telecharger les sources si necessaire;
-2. Preparer un modulefile pour simplifier l'acces a l'application R
+2. Executer le script perl inclu dans les sources;
+3. Preparer un modulefile pour simplifier l'acces a l'application LaTeX
 
 ### 1.4 Post-installation (geree par le playbook):
-Appliquer le playbook pour installer le modulefile R sur l'ensemble des serveurs de SENS.
+Appliquer le playbook pour installer le modulefile LaTeX sur l'ensemble des serveurs de SENS.
 
 ## 2. Supression
 
