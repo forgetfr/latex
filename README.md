@@ -14,8 +14,6 @@ Site officiel de l'application: [CTAN](https://ctan.org/).
 
 ### 1.1 Pre-installation (geree par le playbook):
 N/A
-#### 1.1.1 Dependances systeme pour la compilation
-N/A
 
 ### 1.2 Parametres contextuels
 
