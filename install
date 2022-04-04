@@ -46,18 +46,39 @@ tar -zxf install-tl-unx-${VERSION}.tar.gz --directory $WORKING_BUILD
 # Basculons dans le repertoire de BUILD
 cd $WORKING_BUILD/install-tl-${VERSION}
 
-# Configurer les variables pour modifier le repertoire d'installation.
-export TEXLIVE_INSTALL_PREFIX=${PATH_TO_INSTALL}
-export TEXLIVE_INSTALL_TEXDIR=${TEXLIVE_INSTALL_PREFIX}/${VERSION}
-export TEXLIVE_INSTALL_TEXMFSYSVAR ${TEXLIVE_INSTALL_TEXDIR}/texmf-var
-export TEXLIVE_INSTALL_TEXMFSYSCONFIG ${TEXLIVE_INSTALL_TEXDIR}/texmf-config
-export TEXLIVE_INSTALL_TEXMFLOCAL ${TEXLIVE_INSTALL_TEXDIR}/texmf-local
+# Configurer les variables pour une isntallation sans interraction.
+cat << EOF >> texlive.profile
+selected_scheme scheme-full
+TEXDIR ${PATH_TO_INSTALL}
+TEXMFCONFIG ~/.texlive/texmf-config
+TEXMFHOME ~/texmf
+TEXMFLOCAL ${PATH_TO_INSTALL}/texmf-local
+TEXMFSYSCONFIG ${PATH_TO_INSTALL}/texmf-config
+TEXMFSYSVAR ${PATH_TO_INSTALL}/texmf-var
+TEXMFVAR ~/.texlive/texmf-var
+binary_x86_64-linux 1
+instopt_adjustpath 0
+instopt_adjustrepo 0
+instopt_letter 0
+instopt_portable 0
+instopt_write18_restricted 1
+tlpdbopt_autobackup 1
+tlpdbopt_backupdir tlpkg/backups
+tlpdbopt_create_formats 1
+tlpdbopt_generate_updmap 0
+tlpdbopt_install_docfiles 0
+tlpdbopt_install_srcfiles 0
+tlpdbopt_post_code 1
+tlpdbopt_sys_bin ${PATH_TO_INSTALL}/bin
+tlpdbopt_sys_info ${PATH_TO_INSTALL}/share/info
+tlpdbopt_sys_man ${PATH_TO_INSTALL}/share/man
+EOF
 
 # Creer le repertoire ou residera l'application
-mkdir -p ${TEXLIVE_INSTALL_PREFIX}
+mkdir -p ${PATH_TO_INSTALL}
 
 echo "# SENS ############ Compiler et installer"
-./install-tl --no-gui --location https://ctan.mirror.globo.tech/systems/texlive/tlnet/
+./install-tl  --profile texlive.profile --location https://ctan.mirror.globo.tech/systems/texlive/tlnet/
 
 ############################################################################ 
 ### Etape 3
