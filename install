@@ -47,14 +47,14 @@ tar -zxf install-tl-unx-${VERSION}.tar.gz --directory $WORKING_BUILD
 cd $WORKING_BUILD/install-tl-${VERSION}
 
 # Configurer les variables pour modifier le repertoire d'installation.
-TEXDIR=${PATH_TO_INSTALL}
-TEXMFLOCAL=${PATH_TO_INSTALL}/texmf-local
-TEXMFSYSVAR=${PATH_TO_INSTALL}/texmf-var
-TEXMFSYSCONFIG=${PATH_TO_INSTALL}/texmf-config
+export TEXDIR=${PATH_TO_INSTALL}
+export TEXMFLOCAL=${PATH_TO_INSTALL}/texmf-local
+export TEXMFSYSVAR=${PATH_TO_INSTALL}/texmf-var
+export TEXMFSYSCONFIG=${PATH_TO_INSTALL}/texmf-config
 
 
 # Creer le repertoire ou residera l'application
-mkdir -p ${TEXLIVE_INSTALL_TEXDIR}
+mkdir -p ${PATH_TO_INSTALL}}
 
 echo "# SENS ############ Compiler et installer"
 ./install-tl --no-gui --location https://ctan.mirror.globo.tech/systems/texlive/tlnet/
