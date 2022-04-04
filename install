@@ -54,7 +54,7 @@ export TEXLIVE_INSTALL_TEXMFSYSCONFIG ${TEXLIVE_INSTALL_TEXDIR}/texmf-config
 export TEXLIVE_INSTALL_TEXMFLOCAL ${TEXLIVE_INSTALL_TEXDIR}/texmf-local
 
 # Creer le repertoire ou residera l'application
-mkdir -p ${TEXLIVE_INSTALL_PREFIX}}
+mkdir -p ${TEXLIVE_INSTALL_PREFIX}
 
 echo "# SENS ############ Compiler et installer"
 ./install-tl --no-gui --location https://ctan.mirror.globo.tech/systems/texlive/tlnet/
