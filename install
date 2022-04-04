@@ -8,7 +8,7 @@ VERSION="20220321"
 mount -o remount,exec /tmp
 umask 0022
 
-PATH_TO_INSTALL="${1}"                  # Repertoire d'installation
+PATH_TO_INSTALL="${1}/textlive"         # Repertoire d'installation
 LOCAL_ARTEFACT="${2}"                   # Depot UdeM des sources externes;
 WORKING_BUILD="${3}"                    # Repertoire de compilation
 LOG_DIR="${4}/latex-${VERSION}"         # configure make and install logs
@@ -18,7 +18,7 @@ MODULEFILES_DIR="${5}"                  # Repertoire de la centralisation des mo
 mkdir -p $LOG_DIR
 exec &>> "${LOG_DIR}/`date +%Y-%m-%d-%H-%M-%S`-install"
 
-[[ -d ${PATH_TO_INSTALL} ]] && { echo "Repertoire d'installation existant" ; exit 1; }
+[[ -d ${PATH_TO_INSTALL}/textlive ]] && { echo "Repertoire d'installation existant" ; exit 1; }
 
 ############################################################################ 
 ### FIN: NE PAS MODIFIER CETTE SECTION
