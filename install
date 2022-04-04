@@ -40,11 +40,12 @@ cd $LOCAL_ARTEFACT
 echo "# SENS ############ Decompresser les artefacts"
 tar -zxf install-tl-unx-${VERSION}.tar.gz --directory $WORKING_BUILD
 
-############################################################################ 
-### Etape 2: Compiler les sources;
-############################################################################ 
 # Basculons dans le repertoire de BUILD
 cd $WORKING_BUILD/install-tl-${VERSION}
+
+############################################################################ 
+### Etape 2: Preparer un fichier de configuration 
+############################################################################ 
 
 # Configurer les variables pour une isntallation sans interraction.
 cat << EOF >> texlive.profile
@@ -74,6 +75,10 @@ tlpdbopt_sys_info ${PATH_TO_INSTALL}/share/info
 tlpdbopt_sys_man ${PATH_TO_INSTALL}/share/man
 EOF
 
+
+############################################################################ 
+### Etape 3: Executer l'installateur avec le fichier de configuration;
+############################################################################ 
 # Creer le repertoire ou residera l'application
 mkdir -p ${PATH_TO_INSTALL}
 
@@ -81,13 +86,7 @@ echo "# SENS ############ Compiler et installer"
 ./install-tl  --profile texlive.profile --location https://ctan.mirror.globo.tech/systems/texlive/tlnet/
 
 ############################################################################ 
-### Etape 3
-############################################################################ 
-echo "# SENS ############ Changer le type de papier a lettre"
-${TEXLIVE_INSTALL_TEXDIR}/bin/x86_64-linux/tlmgr paper letter
-
-############################################################################ 
-### Etape 5
+### Etape 4: modulefiles
 ############################################################################ 
 #sed "s@WHERETO@${PATH_TO_INSTALL}@g" ${GIT_DIR}/modulefiles/latex-${VERSION}.lua > $MODULEFILES_DIR/latex-${VERSION}.lua
 

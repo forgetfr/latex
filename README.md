@@ -36,8 +36,8 @@ Par default, l'installateur est interractif. Toutefois, ce dernier peut prendre 
 Les grandes etapes que l'on retrouve dans le script `install` :
 1. Telecharger les sources si necessaire;
 2. Preparer un fichier de configuration 
-2. Executer l'installateur avec le fichier de configuration;
-3. Preparer un modulefile pour simplifier l'acces a l'application LaTeX
+3. Executer l'installateur avec le fichier de configuration;
+
 
 ### 1.4 Post-installation (geree par le playbook):
 Appliquer le playbook pour installer le modulefile LaTeX sur l'ensemble des serveurs de SENS.
