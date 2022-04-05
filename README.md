@@ -8,8 +8,8 @@ Site officiel de l'application: [CTAN](https://ctan.org/).
 | Version  | Auteur  | Description  |
 |---|---|---|
 | 0.1  | francis.forget@umontreal.ca  | MVP  |
-| 0.2  | francis.forget@umontreal.ca  | Automatisation  |
-| 0.3  | francis.forget@umontreal.ca  | Integration a l'environnement de deploiement   |
+| 0.8  | francis.forget@umontreal.ca  | Integration a l'environnement de deploiement   |
+| 0.9  | francis.forget@umontreal.ca  | Resultats tests d'acceptation   |
 | 1.0  | francis.forget@umontreal.ca  | MEP   |
 
 
