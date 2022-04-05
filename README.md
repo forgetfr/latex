@@ -40,10 +40,7 @@ Les grandes etapes que l'on retrouve dans le script `install` :
 1. Telecharger les sources si necessaire;
 2. Preparer un fichier de configuration 
 3. Executer l'installateur avec le fichier de configuration;
-
-
-### 1.4 Post-installation (geree par le playbook):
-Appliquer le playbook pour installer le modulefile LaTeX sur l'ensemble des serveurs de SENS.
+4. Deployer le modulefiles.
 
 ## 2. Supression
 
@@ -52,14 +49,14 @@ Appliquer le playbook pour installer le modulefile LaTeX sur l'ensemble des serv
 | Contexte  | Ordre envoyee par le playbook| Nom de la variable dans les scripts  |
 |---|---|---|
 | Repertoire d'installation         | ${1} | PATH_TO_INSTALL
-| Depot UdeM interne des artefacts  | ${2} | LOCAL_ARTEFACT
-| Repertoire des modulefiles        | ${3} | MODULEFILES_DIR
+| Repertoire des modulefiles        | ${2} | MODULEFILES_DIR
 
 ### 2.2 Procedure:
 
-A venir
+Les grandes etapes que l'on retrouve dans le script `uninstall` :
+1. Supprimer le repertoire de l'application;
+2. Supprimer le modulefiles
 
-### 2.3 Post-suppression (geree par le playbook):
-A venir
+
 
 ## 3. AJout de librairies
