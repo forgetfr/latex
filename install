@@ -88,7 +88,7 @@ echo "# SENS ############ Compiler et installer"
 ############################################################################ 
 ### Etape 4: modulefiles
 ############################################################################ 
-#sed "s@WHERETO@${PATH_TO_INSTALL}@g" ${GIT_DIR}/modulefiles/latex-${VERSION}.lua > $MODULEFILES_DIR/latex-${VERSION}.lua
+sed "s@WHERETO@${PATH_TO_INSTALL}@g" ${GIT_DIR}/modulefiles/latex.lua > $MODULEFILES_DIR/latex-${VERSION}.lua
 
 ############################################################################ 
 ### DEBUT: NE PAS MODIFIER CETTE SECTION
