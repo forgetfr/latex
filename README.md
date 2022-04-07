@@ -17,7 +17,7 @@ Site officiel de l'application: [CTAN](https://ctan.org/).
 
 ### 1.1 Pre-installation (geree par le playbook):
 
-#### 1.1.1 Dependances systeme pour la compilation du core R
+#### 1.1.1 Dependances systeme pour la compilation
 dnf install `tcl tk`
 
 ### 1.2 Parametres contextuels
